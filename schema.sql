@@ -1,0 +1,2 @@
+DROP DATABASE IF EXISTS children;
+CREATE DATABASE children;
