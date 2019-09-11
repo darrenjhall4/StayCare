@@ -3,12 +3,12 @@
 // ******************************************************************************
 // *** Dependencies
 var express = require("express");
-var bodyParser = require("body-parser");
-
+// var bodyParser = require("body-parser");
+require("dotenv").config();
 // Sets up the Express App
 // =============================================================
 var app = express();
-var PORT = process.env.PORT || 3306;
+var PORT = process.env.PORT || 8080;
 
 // Requiring our models for syncing
 var db = require("./models");
@@ -33,10 +33,10 @@ app.use(express.static("public"));
 
 // Syncing our sequelize models and then starting our Express app
 // =============================================================
-// db.sequelize.sync({ force: true }).then(function() {
-//   app.listen(PORT, function() {
-//     console.log("App listening on PORT " + PORT);
-//   });
-// });
+db.sequelize.sync({ force: true }).then(function() {
+  app.listen(PORT, function() {
+    console.log("App listening on PORT " + PORT);
+  });
+});
 
-console.log("Dis be listenin' on da port " + PORT);
+
